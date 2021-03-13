@@ -16,7 +16,8 @@ class Question extends StatelessWidget {
             color: Colors.black,
             decoration: TextDecoration.underline,
             decorationColor: Colors.red,
-            decorationStyle: TextDecorationStyle.wavy),
+            decorationStyle: TextDecorationStyle.wavy,
+            fontSize: 28),
         textAlign: TextAlign.center,
       ),
     );
