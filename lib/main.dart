@@ -46,7 +46,7 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Main Page'),
+          title: Text('==Maruso Page=='),
         ),
         body: Column(
           children: [
