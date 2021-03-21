@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
+import './quiz.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,22 +12,22 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  var _questionindex = 0;
+  var _main_question_index = 0;
 
-  void _answer_question() {
+  void _main_answer_question() {
     setState(() {
-      _questionindex = _questionindex + 1;
+      _main_question_index = _main_question_index + 1;
 
-      if (_questionindex == 3) {
-        _questionindex = 0;
-      }
+      //if (_questionindex == 3) {
+      //  _questionindex = 0;
+      // }
     });
-    print(_questionindex);
+    print(_main_question_index);
   }
 
   @override
   Widget build(BuildContext context) {
-    var _listquestion = [
+    var _main_list_question = [
       {
         'questionText': 'what\'s your hobby?',
         'answer': ['golf', 'badminton', 'race sport']
@@ -48,17 +47,14 @@ class MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('==Maruso Page=='),
         ),
-        body: Column(
-          children: [
-            Question(
-              _listquestion[_questionindex]['questionText'],
-            ),
-            ...(_listquestion[_questionindex]['answer'] as List<String>)
-                .map((answer) {
-              return Answer(_answer_question, answer);
-            }).toList()
-          ],
-        ),
+        body: _main_question_index < _main_list_question.length
+            ? Quiz(
+                answerQuestion: _main_answer_question,
+                question: _main_list_question,
+                questionIndex: _main_question_index)
+            : Center(
+                child: Text('You did it!'),
+              ),
       ),
     );
   }
