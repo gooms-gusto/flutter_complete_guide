@@ -14,11 +14,12 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   var _main_question_index = 0;
+  var _totalscore = 0;
 
-  void _main_answer_question() {
+  void _main_answer_question(int score) {
     setState(() {
       _main_question_index = _main_question_index + 1;
-
+      _totalscore = _totalscore + score;
       //if (_questionindex == 3) {
       //  _questionindex = 0;
       // }
@@ -31,22 +32,33 @@ class MyAppState extends State<MyApp> {
     var _main_list_question = [
       {
         'questionText': 'what\'s your hobby?',
-        'answer': ['golf', 'badminton', 'race sport']
+        'answer': [
+          {'text': 'golf', 'score': 10},
+          {'text': 'badminton', 'score': 20},
+          {'text': 'race sport', 'score': 50}
+        ]
       },
       {
         'questionText': 'what\'s your job?',
-        'answer': ['programmer', 'singer', 'doctor']
+        'answer': [
+          {'text': 'programmer', 'score': 10},
+          {'text': 'singer', 'score': 30},
+          {'text': 'doctor', 'score': 50}
+        ]
       },
       {
         'questionText': 'what\'s your gender?',
-        'answer': ['male', 'female']
+        'answer': [
+          {'text': 'male', 'score': 20},
+          {'text': 'female', 'score': 50}
+        ]
       }
     ];
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('==Maruso Page=='),
+          title: Text('*Maruso Orders*'),
         ),
         body: _main_question_index < _main_list_question.length
             ? Quiz(
